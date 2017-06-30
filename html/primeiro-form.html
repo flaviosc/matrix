@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Formulário</title>
+    <style>
+        div{
+            display: block;
+            position: relative;
+            top: 50px;
+            left: 280px;
+            width: 430px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        form label{
+            display: block;
+            text-align:right;
+            position: relative;
+            left: -343px;
+            margin: -5px;
+        }
+        form input, form select{
+            display: block;
+            position: relative;
+            left: 100px;
+            top: -14px;
+            margin: -5px;
+            width: 325px;
+        }
+        form select#sexo{
+            width: 90px;
+        }
+        form select#curso{
+            width: 275px;
+        }
+        form select#uf{
+            position: relative;
+            left: 432px;
+            top: -28px;
+            width: 50px;
+        }
+        form button{
+            position: relative;
+            left: 120px;
+            top: -5px;
+        }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="email">Endereço de e-mail: </label>
+        <input type="email" name="email" id="email"/>
+       
+      </div>
+      <div>
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome"/>
+      </div>
+      
+      <div>
+          <label for="sexo">Sexo: </label>
+          <select name="sexo" id="sexo">
+            <option disabled selected/>
+            <option value="masculino"> Masculino </option>
+            <option value="feminino"> Feminino </option>
+          </select>
+      </div>
+      
+      <div>
+        <label for="curso">Curso:</label>
+          <select name="curso" id="curso">
+            <option disabled selected/>
+            <option value="informatica">Tecnico em Informática</option>
+            <option value="alimentos">Tecnico em Alimentos</option>
+            <option value="agropecuaria">Tecnico em Agropecuária</option>
+          </select>    
+      </div>
+      <div>
+        <label for="endereco">Endereço para correspondência:</label>
+        <input type="text" name="endereco" id="endereco"/>
+      </div>
+
+       <div>
+        <label for="complemento">Complemento do Endereço:</label>
+        <input type="text" name="complemento" id="complemento" />
+      </div>
+      
+      <div>
+        <label for="cep">CEP:</label>
+        <input type="text" name="cep" id="cep" />
+      </div>
+      
+       <div>
+        <label for="municipio">Município:</label>
+        <input type="text" name="municipio" id="municipio" />
+            
+         <select name="uf" id="uf">
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AM">AM</option>
+            <option value="AP">AP</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MG">MG</option>
+            <option value="MS">MS</option>
+            <option value="MT">MT</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="PR">PR</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RS" selected>RS</option>
+            <option value="RO">RO</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SE">SE</option>
+            <option value="SP">SP</option>
+            <option value="TO">TO</option>
+         </select>
+      </div>
+      
+      <div>
+        <button type="submit">Salvar</button>
+      </div>  
+             
+    </form>  
+
+  </body>
+</html>

@@ -13,8 +13,7 @@ var cadastro = {
 new Vue({
     el: '#divform',
     data: function (){
-        selected: ''
-        /*return cadastro;*/            
+        return cadastro;            
     },
     methods: {
        salvar: function(){

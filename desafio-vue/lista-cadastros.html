@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Cadastros</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <style>
+			h1{
+				text-align: center;
+			}
+        </style>
+    </head>
+    <body @created="listarDados">
+        <h1>Cadastros</h1>
+        <table id="tblDados" class="highlight bordered">
+            <tr>
+                <th>Endereço de e-mail</th>
+                <th>Nome</th>
+                <th>Sexo</th>
+                <th>Curso</th>
+                <th>Endereço para Correspondência: </th>
+                <th>Complemento do Endereço: </th>
+                <th>CEP</th>
+                <th>Município</th>
+                <th>UF</th>
+            </tr>
+            <tr v-for="row in rows">
+                <td><input type="text" v-model="email"></td>
+                <td><input type="text" v-model="nome"></td>
+                <td><input type="text" v-model="sexo"></td>
+                <td><input type="text" v-model="curso"></td>
+                <td><input type="text" v-model="endereco"></td>
+                <td><input type="text" v-model="complemento"></td>
+                <td><input type="text" v-model="cep"></td>
+                <td><input type="text" v-model="municipio"></td>
+                <td><input type="text" v-model="uf"></td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="input-field col s4">
+              <a class="waves-effect waves-light btn" href="form-cadastros.html"><i class="material-icons right">mode_edit</i>Voltar ao formulário</a>
+            </div>
+        </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#tblDados',
+            data: {
+                rows: [
+                    {email: "", 
+                    nome: "", 
+                    sexo: "", 
+                    curso: "", 
+                    endereco: "", 
+                    complemento: "", 
+                    cep: "",
+                    municipio: "",
+                    uf: ""}
+                ]
+                /*
+                email: '',
+                nome: '',
+                sexo: '',
+                curso: '',
+                endereco: '',
+                complemento: '',
+                cep: '',
+                municipio: '',
+                uf: ''*/
+            },
+            methods: {
+                addRow: function(){
+                    this.rows.push({email: "", 
+                    nome: "", 
+                    sexo: "", 
+                    curso: "", 
+                    endereco: "", 
+                    complemento: "", 
+                    cep: "",
+                    municipio: "",
+                    uf: ""});
+                }
+            },
+            created: function(){
+                for(var i=0; i<localStorage.length; i++){
+                    var dados = JSON.parse(localStorage.getItem("objDados"));
+                    this.email = dados['email'];
+                    this.nome = dados['nome'];
+                    this.sexo = dados['sexo'];
+                    this.curso = dados['curso'];
+                    this.endereco = dados['endereco'];
+                    this.complemento = dados['complemento'];
+                    this.cep = dados['cep'];
+                    this.municipio = dados['municipio'];
+                    this.uf = dados['uf'];
+                }
+            }
+        });
+    </script>
+    </body>
+</html>

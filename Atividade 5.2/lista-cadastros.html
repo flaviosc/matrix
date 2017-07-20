@@ -5,13 +5,9 @@
         <title>Cadastros</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <style>
-			h1{
-				text-align: center;
-			}
-        </style>
+        <link rel="stylesheet" href="_css/style-lista.css">
     </head>
-    <body @created="listarDados">
+    <body @mounted="listarDados">
         <h1>Cadastros</h1>
         <table id="tblDados" class="highlight bordered">
             <thead>
@@ -29,15 +25,15 @@
             </thead>
             <tbody>
 				<tr v-for="row in rows">
-					<td><input type="text" v-model="email"></td>
-					<td><input type="text" v-model="nome"></td>
-					<td><input type="text" v-model="sexo"></td>
-					<td><input type="text" v-model="curso"></td>
-					<td><input type="text" v-model="endereco"></td>
-					<td><input type="text" v-model="complemento"></td>
-					<td><input type="text" v-model="cep"></td>
-					<td><input type="text" v-model="municipio"></td>
-					<td><input type="text" v-model="uf"></td>
+					<td><input type="text" v-model="row.email" class="browser-default"></td>
+					<td><input type="text" v-model="row.nome" class="browser-default"></td>
+					<td><input type="text" v-model="row.sexo" class="browser-default"></td>
+					<td><input type="text" v-model="row.curso" class="browser-default"></td>
+					<td><input type="text" v-model="row.endereco" class="browser-default"></td>
+					<td><input type="text" v-model="row.complemento" class="browser-default"></td>
+					<td><input type="text" v-model="row.cep" class="browser-default"></td>
+					<td><input type="text" v-model="row.municipio" class="browser-default"></td>
+					<td><input type="text" v-model="row.uf" class="browser-default"></td>
 				</tr>
             </tbody>
         </table>
@@ -47,51 +43,6 @@
             </div>
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
-    <script>
-        new Vue({
-            el: '#tblDados',
-            data: {
-                rows: [
-                    {email: "", 
-                    nome: "", 
-                    sexo: "", 
-                    curso: "", 
-                    endereco: "", 
-                    complemento: "", 
-                    cep: "",
-                    municipio: "",
-                    uf: ""}
-                ]
-            }),
-            methods: {
-                addRow: function(){
-                    this.rows.push({
-					email: "", 
-                    nome: "", 
-                    sexo: "", 
-                    curso: "", 
-                    endereco: "", 
-                    complemento: "", 
-                    cep: "",
-                    municipio: "",
-                    uf: ""});
-                }
-            },
-            created: function(){
-                for(var i=0; i<localStorage.length; i++){
-                    var dados = JSON.parse(localStorage.getItem("objDados"));
-                    this.email = dados['email'];
-                    this.nome = dados['nome'];
-                    this.sexo = dados['sexo'];
-                    this.curso = dados['curso'];
-                    this.endereco = dados['endereco'];
-                    this.complemento = dados['complemento'];
-                    this.cep = dados['cep'];
-                    this.municipio = dados['municipio'];
-                    this.uf = dados['uf'];
-                }
-            }
-        });
-    </script>
+    <script src="_js/functions-lista.js"></script>
     </body>
 </html>

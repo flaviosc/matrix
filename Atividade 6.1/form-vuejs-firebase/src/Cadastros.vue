@@ -1,5 +1,5 @@
 <template>
-    <div id="app2">
+    <div id="app">
         <h1>Cadastros</h1>
         <table id="tblDados" class="highlight bordered">
             <thead>
@@ -71,7 +71,6 @@ table input{
     display: block;
     box-shadow: none;
     border: none;
-    outline: none;
-    
+    outline: none; 
 }
 </style>

@@ -1,4 +1,4 @@
-# atividade-6
+# form-vuejs-firebase
 
 > A Vue.js project
 

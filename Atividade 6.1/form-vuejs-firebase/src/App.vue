@@ -26,8 +26,8 @@
               </button>
             </div>
             <div class="row">
-              <input type="checkbox" id="checkbox">
-              <label for="checkbox">Gravar no Firebase</label>
+              <input type="checkbox" id="checkbox" v-model="checked">
+              <label for="checkbox">Gravar no Firebase {{checked}}</label>
             </div>
           </div>
         </form>
@@ -51,16 +51,17 @@
 
   let app = Firebase.initializeApp(config);
   let db = app.database();
-  let dadosRef = db.ref("form-vuejs-firebase");
+  let dbRef = db.ref("form-vuejs-firebase");
 
   export default {
     firebase:{
-      dadosFirebase: dadosRef
+      dadosFirebase: dbRef
     }, 
     /*name: 'app',*/
 
     data(){
       return{
+        checked: false,
         objDados:[],
         newArray: {
           sexo: ""
@@ -69,8 +70,13 @@
     },
     methods: {
       salvar: function(){
-        this.objDados.push(JSON.stringify(this.newArray));
-        localStorage.setItem("inscritos", this.objDados);
+        if(this.checked){
+          alert("Gravado no Firebase");
+          dbRef.push(this.newArray);
+        } else {
+          this.objDados.push(JSON.stringify(this.newArray));
+          localStorage.setItem("inscritos", this.objDados);
+        }
       }
     }
   }

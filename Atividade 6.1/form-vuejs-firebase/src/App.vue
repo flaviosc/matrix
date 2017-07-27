@@ -86,6 +86,11 @@
             </div>
           </div>
 
+          <div class="row" id="checkbox">
+              <input type="checkbox" id="checkbox" v-model="checked">
+              <label for="checkbox">Gravar no Firebase {{checked}}</label>
+          </div>
+
           <div class="row">
             <div class="input-field col s4">
               <button class="btn waves-effect waves-light" type="submit" name="action" id="salvar">Salvar
@@ -93,9 +98,8 @@
               </button>
             </div>
           
-            <div class="row">
-              <input type="checkbox" id="checkbox" v-model="checked">
-              <label for="checkbox">Gravar no Firebase {{checked}}</label>
+            <div class="input-field col s4">
+                <a class="waves-effect waves-light btn" href="lista-cadastros.html"><i class="material-icons right">toc</i>Ver Todos</a>
             </div>
           </div>
         </form>
@@ -130,6 +134,18 @@
       return{
         checked: false,
         objDados:[],
+
+        vetDados: {
+          email: "",
+          nome: "",
+          sexo: "",
+          curso: "",
+          endereco: "",
+          complemento: "",
+          cep: "",
+          municipio: "",
+          uf: "",
+        },
         opcSexo: [
           {text: '', value: '', disabled: 0},
           {text: 'Masculino', value: 'masculino'},
@@ -171,17 +187,6 @@
           {text: 'SP', value: 'SP'},
           {text: 'TO', value: 'TO'},
         ], 
-        vetDados: {
-          email: "",
-          nome: "",
-          sexo: "",
-          curso: "",
-          endereco: "",
-          complemento: "",
-          cep: "",
-          municipio: "",
-          uf: "",
-        },
       }
     },
 
@@ -200,12 +205,119 @@
 </script>
 
 <style>
+  body{
+      display: block;
+      width: 880px;
+      height: 400px;
+      position: absolute;
+      left: 15%;
+  }
+
+  h1#titulo{
+      display: inline-block;
+      position: relative;
+      left: 160px;
+  }
+
+  form{
+      display: block;
+      box-shadow: 1px 1px 5px #000;
+      top: -30px;
+      padding-left: 20px;
+      padding-top: 10px;
+  }
+
   select#sexo, select#curso{
+      display: block;
+      position: relative;
+      left: 87px;
+      background: transparent;
+      border: 1px solid #A9A9A9;
+  }
+
+  select#uf{
+      display: block;
+      position: relative;
+      left: 25px;
+      background: transparent;
+      border: 1px solid #A9A9A9;
+  }
+        
+  form div#uf{
+      display: inline-block;
+      position: absolute;
+      left: 40px;
+  }
+        
+  form button{
+      display: inline-block;
+      position: relative;
+      top: -25px;
+      left: 80px;
+  }
+
+  form a{
+      display: inline-block;
+      position: relative;
+      top: -25px;
+      left: 80px;
+  }
+
+  h1#titulo{
+      display: inline-block;
+      position: relative;
+      left: 160px;
+  }
+      
+  form{
+      display: block;
+      box-shadow: 1px 1px 5px #000;
+      top: -30px;
+      padding-left: 20px;
+      padding-top: 10px;
+  }
+
+  select#sexo, select#curso{
+      display: block;
+      position: relative;
+      left: 87px;
+      top: -5px;
+      background: transparent;
+      border: 1px solid #A9A9A9;
+  }
+
+  select#uf{
+      display: block;
+      position: relative;
+      left: 25px;
+      background: transparent;
+      border: 1px solid #A9A9A9;
+  }
+
+  form div#uf{
+      display: inline-block;
+      position: absolute;
+      left: 40px;
+  }
+
+  form button{
+      display: inline-block;
+      position: relative;
+      top: -25px;
+      left: 80px;
+  }
+
+  form a{
+      display: inline-block;
+      position: relative;
+      top: -25px;
+      left: 70px;
+  }
+
+  div#checkbox{
     display: block;
     position: relative;
-    left: 87px;
     top: -5px;
-    background: transparent;
-    border: 1px solid #A9A9A9;
-}
+    left: 32px;
+  }
 </style>

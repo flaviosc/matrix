@@ -4,18 +4,85 @@
       <header>
         <h1 id="titulo">Formulário</h1>
       </header>
-      <div class="#f5f5f5 grey lighten-4" id="divform">
+      <div class="#f5f5f5 grey lighten-4" id="app">
         <form class="col s10" v-on:submit.prevent="salvar">
+          <div class="row">
+		        <div class="input-field col s8">
+              <i class="material-icons prefix">email</i>
+              <input id="email" type="email" class="validate" v-model="vetDados.email">
+              <label for="email" data-error="e-mail inválido" data-success="Ok!">Endereço de e-mail: </label>		  
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s8">
+              <i class="material-icons prefix">perm_identity</i>
+              <input id="nome" type="text" class="validate" v-model="vetDados.nome">
+              <label for="nome">Nome: </label>
+            </div>
+          </div>
+
           <div class="row">
             <div class="input-field col s4">
 			        <i class="material-icons prefix">list</i>
-              <select class="browser-default" id="sexo" v-model="newArray.sexo">
-                <option value="" selected></option>
-                <option value="Masculino">Masculino</option>
-                <option value="Feminino">Feminino</option>                  
+              <select class="browser-default" id="sexo" v-model="vetDados.sexo">
+                <option v-for="option in opcSexo" v-bind:value="option.value" :disabled="option.disabled">
+                  {{ option.text }}
                 </option>
 			        </select>
               <label for="sexo">Sexo: </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s6">
+			  <i class="material-icons prefix">list</i>
+              <select class="browser-default" id="curso" v-model="vetDados.curso">
+                <option v-for="option in opcCurso" v-bind:value="option.value" :disabled="option.disabled">
+					        {{ option.text }}
+				        </option>
+			        </select>
+              <label for="curso">Curso: </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s8">
+			        <i class="material-icons prefix">mode_edit</i>
+              <input id="endereco" type="text" class="validate" v-model="vetDados.endereco">
+              <label for="endereco">Endereço para correspondência: </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s8">
+			        <i class="material-icons prefix">mode_edit</i>
+              <input id="complemento" type="text" class="validate" v-model="vetDados.complemento">
+              <label for="complemento">Complemento do Endereço: </label>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s5">
+              <i class="material-icons prefix">mode_edit</i>
+              <input id="cep" type="text" v-model="vetDados.cep">
+              <label for="cep">CEP: </label>   
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s8" id="divMunicipio">
+              <i class="material-icons prefix">mode_edit</i>
+              <input id="municipio" type="text" class="validate" v-model="vetDados.municipio">
+              <label for="municipio">Município: </label>
+            </div>
+            <div class="input-field col s2">
+              <select class="browser-default" id="uf" v-model="vetDados.uf">
+              <option v-for="option in opcUf" v-bind:value="option.value">
+                {{ option.text }}
+              </option>
+              </select>
+              <label for="uf">UF: </label>
             </div>
           </div>
 
@@ -25,6 +92,7 @@
                 <i class="material-icons right">send</i>
               </button>
             </div>
+          
             <div class="row">
               <input type="checkbox" id="checkbox" v-model="checked">
               <label for="checkbox">Gravar no Firebase {{checked}}</label>
@@ -41,40 +109,89 @@
 
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyC9gNJ1knLIOlmLyrgOn3sBV3o2tQow-L0",
-    authDomain: "form-vuejs-firebase.firebaseapp.com",
-    databaseURL: "https://form-vuejs-firebase.firebaseio.com",
-    projectId: "form-vuejs-firebase",
-    storageBucket: "form-vuejs-firebase.appspot.com",
-    messagingSenderId: "304396761781"
+    apiKey: "AIzaSyBBNolbt-g7fYaIHlLUNUFRhRG_cdTBkGM",
+    authDomain: "inscritos-44e7e.firebaseapp.com",
+    databaseURL: "https://inscritos-44e7e.firebaseio.com",
+    projectId: "inscritos-44e7e",
+    storageBucket: "inscritos-44e7e.appspot.com",
+    messagingSenderId: "1004259866200"
   };
 
   let app = Firebase.initializeApp(config);
   let db = app.database();
-  let dbRef = db.ref("form-vuejs-firebase");
+  let dbRef = db.ref("inscritos-44e7e");
 
   export default {
     firebase:{
       dadosFirebase: dbRef
     }, 
-    /*name: 'app',*/
 
     data(){
       return{
         checked: false,
         objDados:[],
-        newArray: {
-          sexo: ""
-        }
+        opcSexo: [
+          {text: '', value: '', disabled: 0},
+          {text: 'Masculino', value: 'masculino'},
+          {text: 'Feminino', value: 'feminino'}
+        ],
+
+        opcCurso: [
+          {text: '', value: '', disabled: 0},
+          {text: 'Curso Técnico em Informática', value: 'informatica',},
+          {text: 'Curso Técnico em Alimentos', value: 'alimentos'},
+          {text: 'Curso Técnico em Agropecuária', value: 'agropecuaria'}
+        ],
+
+        opcUf: [
+          {text: 'AC', value: 'AC'},
+          {text: 'AL', value: 'AL'},
+          {text: 'AM', value: 'AM'},
+          {text: 'AP', value: 'AP'},
+          {text: 'BA', value: 'BA'},
+          {text: 'CE', value: 'CE'},
+          {text: 'DF', value: 'DF'},
+          {text: 'ES', value: 'ES'},
+          {text: 'GO', value: 'GO'},
+          {text: 'MA', value: 'MA'},
+          {text: 'MG', value: 'MG'},
+          {text: 'MS', value: 'MS'},
+          {text: 'MT', value: 'MT'},
+          {text: 'PA', value: 'PA'},
+          {text: 'PB', value: 'PB'},
+          {text: 'PI', value: 'PI'},
+          {text: 'PR', value: 'PR'},
+          {text: 'RJ', value: 'RJ'},
+          {text: 'RN', value: 'RN'},
+          {text: 'RS', value: 'RS'},
+          {text: 'RO', value: 'RO'},
+          {text: 'RR', value: 'RR'},
+          {text: 'SC', value: 'SC'},
+          {text: 'SE', value: 'SE'},
+          {text: 'SP', value: 'SP'},
+          {text: 'TO', value: 'TO'},
+        ], 
+        vetDados: {
+          email: "",
+          nome: "",
+          sexo: "",
+          curso: "",
+          endereco: "",
+          complemento: "",
+          cep: "",
+          municipio: "",
+          uf: "",
+        },
       }
     },
+
     methods: {
       salvar: function(){
         if(this.checked){
           alert("Gravado no Firebase");
-          dbRef.push(this.newArray);
+          dbRef.push(this.vetDados);
         } else {
-          this.objDados.push(JSON.stringify(this.newArray));
+          this.objDados.push(JSON.stringify(this.vetDados));
           localStorage.setItem("inscritos", this.objDados);
         }
       }

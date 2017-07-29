@@ -87,8 +87,10 @@
           </div>
 
           <div class="row" id="checkbox">
-              <input type="checkbox" id="checkbox" v-model="checked">
-              <label for="checkbox">Gravar no Firebase {{checked}}</label>
+            <p>
+              <input type="checkbox" id="check" v-model="checked"/>
+              <label for="check">Gravar no Firebase {{checked}}</label>
+            </p> 
           </div>
 
           <div class="row">
@@ -96,10 +98,6 @@
               <button class="btn waves-effect waves-light" type="submit" name="action" id="salvar">Salvar
                 <i class="material-icons right">send</i>
               </button>
-            </div>
-          
-            <div class="input-field col s4">
-                <a class="waves-effect waves-light btn" href="lista-cadastros.html"><i class="material-icons right">toc</i>Ver Todos</a>
             </div>
           </div>
         </form>
@@ -196,8 +194,12 @@
           alert("Gravado no Firebase");
           dbRef.push(this.vetDados);
         } else {
-          this.objDados.push(JSON.stringify(this.vetDados));
-          localStorage.setItem("inscritos", this.objDados);
+          if(localStorage.inscritos){
+            this.objDados.push(JSON.stringify(this.vetDados));
+            localStorage.setItem("inscritos", this.objDados);
+          } else {
+            JSON.stringify(localStorage.setItem("inscritos", this.objDados));
+          }
         }
       }
     }
@@ -317,7 +319,7 @@
   div#checkbox{
     display: block;
     position: relative;
-    top: -5px;
-    left: 32px;
+    top: -10px;
+    left: 55px;
   }
 </style>

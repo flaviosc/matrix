@@ -1,0 +1,12 @@
+.center-align {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.card-panel{
+    display: block;
+    height: 500px;
+    width: 400px;
+}
